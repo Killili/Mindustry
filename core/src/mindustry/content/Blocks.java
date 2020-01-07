@@ -57,7 +57,7 @@ public class Blocks implements ContentList{
     scrapWall, scrapWallLarge, scrapWallHuge, scrapWallGigantic, thruster, //ok, these names are getting ridiculous, but at least I don't have humongous walls yet
 
     //transport
-    conveyor, titaniumConveyor, armoredConveyor, distributor, junction, itemBridge, phaseConveyor, sorter, invertedSorter, router, overflowGate, massDriver,
+    conveyor, titaniumConveyor, plastaniumConveyor, armoredConveyor, distributor, junction, itemBridge, phaseConveyor, sorter, invertedSorter, router, overflowGate, massDriver,
 
     //liquids
     mechanicalPump, rotaryPump, thermalPump, conduit, pulseConduit, platedConduit, liquidRouter, liquidTank, liquidJunction, bridgeConduit, phaseConduit,
@@ -879,19 +879,26 @@ public class Blocks implements ContentList{
         //endregion
         //region distribution
 
-        conveyor = new Conveyor("conveyor"){{
+        conveyor = new ItemConveyor("conveyor"){{
             requirements(Category.distribution, ItemStack.with(Items.copper, 1), true);
             health = 45;
             speed = 0.03f;
         }};
 
-        titaniumConveyor = new Conveyor("titanium-conveyor"){{
+        titaniumConveyor = new ItemConveyor("titanium-conveyor"){{
             requirements(Category.distribution, ItemStack.with(Items.copper, 1, Items.lead, 1, Items.titanium, 1));
             health = 65;
             speed = 0.08f;
         }};
 
-        armoredConveyor = new ArmoredConveyor("armored-conveyor"){{
+        plastaniumConveyor = new CraterConveyor("plastanium-conveyor"){{
+            requirements(Category.distribution, ItemStack.with(Items.plastanium, 1, Items.silicon, 1, Items.graphite, 1));
+            itemCapacity = 8;
+            speed = 0.04f;
+            health = 75;
+        }};
+
+        armoredConveyor = new ArmoredItemConveyor("armored-conveyor"){{
             requirements(Category.distribution, ItemStack.with(Items.plastanium, 1, Items.thorium, 1, Items.metaglass, 1));
             health = 180;
             speed = 0.08f;
